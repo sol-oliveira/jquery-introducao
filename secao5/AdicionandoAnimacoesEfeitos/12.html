@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery</title>
+</head>
+<body>
+	<input class="control" type="text" />
+	<ul>
+		<li>Linha 1</li>
+		<li>Linha 2</li>
+		<li>Linha 3</li>
+		<li>Linha 4</li>
+		<li>Linha 5</li>
+	</ul>
+	<button class="btn-show" disabled="disabled">Mostrar</button>
+	<button class="btn-hide" disabled="disabled">Esconder</button>
+	<button class="btn-toggle" disabled="disabled">Alternar</button>
+	<button class="btn-slide-toggle" disabled="disabled">Alternar com slide</button>
+	<button class="btn-fade-toggle" disabled="disabled">Alternar com fade</button>
+	<button class="btn-animate" disabled="disabled">Aplicar animações CSS</button>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$(".btn-show").click(function() {
+				$("li").show("slow", function() {
+					console.info("Show completo");
+				});
+			});
+  
+			$(".btn-hide").click(function() {
+				$("li").hide("fast", function() {
+					console.info("Hide completo");
+				});
+			});
+  
+			$(".btn-toggle").click(function() {
+				$("li").toggle(5000, function() {
+					console.info("Toggle completo");
+				});
+			});
+  
+			$(".btn-slide-toggle").click(function() {
+				$("li").slideToggle(2000, function() {
+					console.info("Slide toggle completo");
+					$(this).css("font-size", "30px");
+				});
+			});
+  
+			$(".btn-fade-toggle").click(function() {
+				$("li").fadeToggle(3500, function() {
+					console.info("Fade toggle completo")
+					$(this).css("font-size", "40px");
+				});
+			});
+  
+			$(".btn-animate").click(function() {
+				$("li").animate({
+					marginLeft: "+=20",
+					fontSize: "+=2"
+				}, 3000, function() {
+					console.info("Animação completa");
+					$(this).delay(3000).fadeOut("fast");
+				});
+			});
+  
+			$(".control").keyup(function() {
+				var text = $(this).val();
+				if (text != null && text != "" && text.length >= 5) {
+					$("button").removeAttr("disabled");
+				} else {
+					$("button").attr("disabled", "disabled");
+				}
+			});
+		});
+	</script>
+</body>
+</html>

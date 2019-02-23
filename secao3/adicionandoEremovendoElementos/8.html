@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery</title>
+</head>
+<body>
+	<h2>Título H2</h2>
+	<ul class="list">
+		<li>Linha 1</li>
+		<li>Linha 2</li>
+	</ul>
+	<p>Texto</p>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var initial = $(".list li").length;
+  
+			function insertLiElements(initialValue, maxValue) {
+				if (initialValue >= maxValue) {
+					return;
+				}
+    
+				for (i = initialValue + 1; i <= maxValue; i++) {
+					var elementToAdd = "<li> Linha " + i + "</li>";
+					$(".list").append(elementToAdd);
+				}
+			}
+		  
+			insertLiElements(initial, 20);
+		  
+			$("h2").before("<h1>Título H1</h1>");
+			$("h2").after("<h3>Título H3</h3>");
+		  
+			$("p").remove();
+		});
+	</script>
+</body>
+</html>

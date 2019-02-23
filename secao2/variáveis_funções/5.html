@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery</title>
+</head>
+<body>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var number = 1;
+			var text = "Testando";
+			var numberB = 5;
+		  
+			var result = number + numberB;
+		  
+			var check = number > numberB;
+		  
+			console.info(number);
+			console.info(text);
+			console.info(result);
+			console.info(check);
+			  
+			function sumTwoNumbers(first, second) {
+				return first + second;
+			}
+			  
+			console.info(sumTwoNumbers(4, 7));
+			console.info(sumTwoNumbers(3, 3));
+			console.info(sumTwoNumbers(9, 0));
+		});
+	</script>
+</body>
+</html>

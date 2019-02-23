@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery</title>
+	<style type="text/css">
+		label { display: block; }
+		input { margin: 3px; 0 }
+	</style>
+</head>
+<body>
+	<form method="post" action="#">
+		<label>Nome:</label>
+		<input type="text" name="nome" />
+		<label>Cidade:</label>
+		<input type="text" name="cidade" />
+		<label>Estado:</label>
+		<input type="text" name="estado" />
+		<br />
+		<button class="clear-form" type="button">Limpar</button>
+		<button type="submit">Enviar</button>
+	</form>
+	<ul class="events">
+	</ul>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$(".clear-form").click(function() {
+				$(".events").prepend("<li>click</li>");
+				$(this).parents("form").find("input").val("");
+			});
+  
+			$("input").change(function() {
+				$(".events").prepend("<li>change</li>");
+			});
+  
+			$("input").focus(function() {
+				$(".events").prepend("<li>focus</li>");
+			});
+  
+			$("input").blur(function() {
+				$(".events").prepend("<li>blur</li>");
+			});
+  
+			$("button").hover(function() {
+				$(".events").prepend("<li>hover</li>");
+			});
+  
+			$("form").submit(function(e) {
+				$(".events").prepend("<li>submit</li>");
+				e.preventDefault();
+				return false;
+			});
+  
+			$("input").keydown(function(e) {
+				$(".events").prepend("<li>keydown " + e.keyCode + "</li>");
+			});
+  
+			$("input").mousedown(function() {
+				$(".events").prepend("<li>mousedown</li>");
+			});
+		});
+	</script>
+</body>
+</html>
