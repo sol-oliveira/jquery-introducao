@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery</title>
+</head>
+<body>
+	<button class="ajax-get">Consultar GET</button>
+	<form class="ajax-post" method="POST" action="https://cors-test.appspot.com/test">
+		<input type="text" name="name" />
+		<input type="text" name="user" />
+		<button type="submit">Postar</button>
+	</form>
+	<div class="results"></div>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$(".ajax-get").click(function() {
+				$.ajax({
+					type: "GET",
+					url: "https://www.google.com"
+				}).done(function(data) {
+					console.info(data);
+					$(".results").html("<p>" + data["status"] + "</p>");
+				}).fail(function(error) {
+					console.info(error);
+					$(".results").html("<p>Ocorreu um erro</p>");
+				});
+			});
+  
+			$(".ajax-post").submit(function(e) {
+				var form = $(this);
+				e.preventDefault();
+				$.ajax({
+					type: $(form).attr("method"),
+					url: $(form).attr("action"),
+					data: $(form).serialize()
+				}).done(function(data) {
+					console.info(data);
+					$(".results").append("<p>" + data["status"] + "</p>");
+				});
+			});
+		});
+	</script>
+</body>
+</html>
